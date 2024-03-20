@@ -45,7 +45,7 @@ Future updates will include:
 
 ### Documentation:
 
-_Printed via `help(pdfTTS) in `main.py`:_
+_Printed via `help(pdfTTS)` in `main.py`:_
 
 ```
 Help on class PollyTTS in module __main__:
