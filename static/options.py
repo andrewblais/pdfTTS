@@ -9,23 +9,23 @@ voice_ids = ["Aditi", "Amy", "Astrid", "Bianca", "Brian", "Camila", "Carla",
              "Russell", "Salli", "Seoyeon", "Takumi", "Tatyana", "Vicki",
              "Vitoria", "Zeina", "Zhiyu"]
 
-eng_language_code_dict = {"en-AU": "Australian",
-                          "en-IN": "Indian",
-                          "en-IE": "Irish",
-                          "en-NZ": "New Zealander Kiwi",
-                          "en-ZA": "South African",
-                          "en-GB": "English",
-                          "en-US": "American",
-                          "en-GB-WLS": "Welsh"}
+eng_language_code_dict = {"en-AU": "Australian English",
+                          "en-IN": "Indian English",
+                          "en-IE": "Irish English",
+                          "en-NZ": "New Zealander Kiwi English",
+                          "en-ZA": "South African English",
+                          "en-GB": "English English",
+                          "en-US": "American English",
+                          "en-GB-WLS": "Welsh English"}
 
-eng_language_name_dict = {"Australian": "en-AU",
-                          "Indian": "en-IN",
-                          "Irish": "en-IE",
-                          "New Zealander Kiwi": "en-NZ",
-                          "South African": "en-ZA",
-                          "English": "en-GB",
-                          "American": "en-US",
-                          "Welsh": "en-GB-WLS"}
+eng_language_name_dict = {"Australian English": "en-AU",
+                          "Indian English": "en-IN",
+                          "Irish English": "en-IE",
+                          "New Zealander Kiwi English": "en-NZ",
+                          "South African English": "en-ZA",
+                          "English English": "en-GB",
+                          "American English": "en-US",
+                          "Welsh English": "en-GB-WLS"}
 
 output_formats = ["json", "mp3", "ogg_vorbis", "pcm"]
 

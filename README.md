@@ -201,24 +201,35 @@ you figure out how to improve as a developer._
 
 **_Write down how you approached the project._**
 
-Coming soon...
+It took a little time, but I settled on using AWS Polly to to the speechifying. I also
+decided to write the application as a class with a separate file for data/options.
 
 **_What was hard?_**
 
-Coming soon...
+The hardest part was conquering my fear of using AWS, both because I've found it a
+bit intimidating, but also I was trepidatious about trying to make sure I could use
+the free tier without triggering any charges. I decided to use the web interface
+rather than the CLI, and will leave that challenge for a later date.
 
 **_What was easy?_**
 
-Coming soon...
+I'm confident at this point in creating a class from scratch and populating it with
+necessary attributes and useful methods. This is even fun for me at this point.
 
 **_How might you improve for the next project?_**
 
-Coming soon...
+Once again, my priority has to be on core-functionality over making cool features.
+I tend to get ahead of myself in this respect, and need to concentrate on planning the
+simplest possible roadmap when creating a new project -- then adding interesting/
+creative features later.
 
 **_What was your biggest learning from today?_**
 
-Coming soon...
+Learning about AWS and Polly. I was pleasantly surprised, after getting my feet wet,
+that it's not quite as difficult to use as I thought it would be.
 
 **_What would you do differently if you were to tackle this project again?_**
 
-Coming soon...
+Make sure to not waste time writing unnecessary methods: getting things clear in my
+head or on paper to see the direction the application should take, then following that
+plan -- but remaining flexible at the same time.

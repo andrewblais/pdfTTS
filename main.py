@@ -40,13 +40,13 @@ class PollyTTS:
     :type str_input: str
     :param use_temp_dir: Flag to use a temporary directory for output files. Optional.
     :type use_temp_dir: bool
-    :param user_filename: Prefix for the output filename. Optional.
-    :type user_filename: str
+    :param user_file_prefix: Prefix for the output filename. Optional.
+    :type user_file_prefix: str
     """
 
     def __init__(self, access_key: str, secret_access_key: str,
                  pdf_input_path: str = "", str_input: str = "",
-                 use_temp_dir: bool = False, user_filename: str = ""):
+                 use_temp_dir: bool = False, user_file_prefix: str = ""):
         # Initialize instance variables:
         self.pdf_input_path = pdf_input_path
         self.str_input = str_input
@@ -54,7 +54,7 @@ class PollyTTS:
         self.aws_client_str = ""
 
         # Output filename management:
-        self.output_file_prefix = user_filename
+        self.user_file_prefix = user_file_prefix
         self.output_filename = ""
 
         # Default AWS Polly settings:
@@ -91,7 +91,7 @@ class PollyTTS:
                 aws_secret_access_key=self._secret_access_key,
                 region_name="us-east-1"
             )
-            print("`_initialize_client` successfully executed.")
+            print("AWS-Polly client successfully initiated.")
         except (BotoCoreError, ClientError) as e:
             # Exit on failure to initialize the client:
             sys.exit(f"Failed to initialize AWS Polly client: {e}")
@@ -132,18 +132,16 @@ class PollyTTS:
 
     def _determine_output_filename(self):
         """
-        Determines the output filename based on the user_filename parameter or generates
+        Determines the output filename based on the user_file_prefix parameter or generates
          a random filename if none is provided.
         """
-        if not self.output_filename:
+        if not self.user_file_prefix:
             random_filename = secrets.token_urlsafe(6)
             print(f"Generated random file name: {random_filename}")
-            self.output_filename = f"pdf_tts_{random_filename}"
-        else:
-            self.output_filename = ""
+            self.user_file_prefix = f"pdf_tts_{random_filename}"
         # Append the audio format extension to the output filename to ensure proper
         #  file handling:
-        self.output_filename = f"{self.output_filename}.{self.output_format}"
+        self.output_filename = f"{self.user_file_prefix}.{self.output_format}"
 
     def _get_synthesized_speech(self):
         """
@@ -157,7 +155,7 @@ class PollyTTS:
                 LanguageCode=self.language_code,
                 SampleRate=self.sample_rate
             )
-            print("`_get_synthesized_speech` successfully executed.")
+            print("Speech successfully synthesized.")
         except (BotoCoreError, ClientError) as e:
             print(f"`_get_synthesized_speech` error: {e}")
             sys.exit(-1)
@@ -179,8 +177,7 @@ class PollyTTS:
                     # Write the audio stream to file:
                     with open(output_path, "wb") as audio_file:
                         audio_file.write(audio_stream.read())
-                    print("`_write_audio_file` successfully executed.")
-                    print(f"Output file path: {output_path}")
+                    print(f"Audio file successfully written to {output_path} ")
                 except IOError as e:
                     # Handle file writing errors:
                     print(f"`_write_audio_file` error: {e}")
@@ -328,7 +325,7 @@ class PollyTTS:
             raise TypeError(
                 f"`choose_eng_accent` error: {error}. Defaulting to 'en-US'.")
         finally:
-            print(f"Setting `eng_language_code` to: {self.language_code}.")
+            print(f"Speech will be in {eng_language_code_dict[self.language_code]}.")
 
     def complete_tts(self):
         """
@@ -347,7 +344,7 @@ if __name__ == "__main__":
         access_key=os.environ.get("AWS_ACCESS_KEY"),
         secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
         pdf_input_path=pdf_path,
+        user_file_prefix="dickinson_hope"
     )
     pdf_tts.random_voice_id()
     pdf_tts.complete_tts()
-    # help(PollyTTS)
